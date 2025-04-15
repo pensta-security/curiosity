@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: firstrun-job
+spec:
+  template:
+    metadata:
+      labels:
+        app: firstrun-job
+    spec:
+      containers:
+      - name: firstrun-container
+        image: alpine:3.18
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          cd /data
+          git clone https://github.com/pensta-security/curiosity
+        volumeMounts:
+        - name: data-volume
+          mountPath: /data/
+      volumes:
+      - name: data-volume
+        hostPath:
+          path: /opt/pensta/
+          type: DirectoryOrCreate
+      restartPolicy: Never
+  backoffLimit: 1
