@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: update-job
+spec:
+  template:
+    metadata:
+      labels:
+        app: update-job
+    spec:
+      containers:
+      - name: update-container
+        image: alpine:3.18
+        command: ["/bin/sh", "-c"]
+        args:
+        - |
+          cd /data
+          git pull
+        volumeMounts:
+        - name: data-volume
+          mountPath: /data/
+      volumes:
+      - name: data-volume
+        hostPath:
+          path: /opt/pensta/curiosity/
+          type: Directory
+      restartPolicy: Never
+  backoffLimit: 1
