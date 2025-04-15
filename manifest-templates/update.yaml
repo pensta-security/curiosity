@@ -14,6 +14,7 @@ spec:
         command: ["/bin/sh", "-c"]
         args:
         - |
+          apk add --no-cache git
           cd /data
           git pull
         volumeMounts:
