@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: curiosity-api
+  labels:
+    app: curiosity-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: curiosity-api
+  template:
+    metadata:
+      labels:
+        app: curiosity-api
+    spec:
+      containers:
+      - name: curiosity-api-container
+        image: python:3.10-alpine
+        command: 
+        - /bin/sh
+        - -c
+        - |
+          echo curiosity api v1
+          pip install flask
+          cd /api
+          python api.py
+        volumeMounts:
+        - name: api-volume
+          mountPath: /api
+        ports:
+        - containerPort: 8000
+      volumes:
+      - name: api-volume
+        hostPath: 
+          path: /opt/pensta/curiosity/system/curiosity-api
+          type: Directory   
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: curiosity-api-service
+spec:
+  selector:
+    app: curiosity-api
+  ports:
+  - port: 8000
+    targetPort: 8000
+  type: NodePort
