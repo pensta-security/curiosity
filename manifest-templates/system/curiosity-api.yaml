@@ -30,12 +30,18 @@ spec:
         volumeMounts:
         - name: api-volume
           mountPath: /api
+        - name: template-volume
+          mountPath: /manifest-templates
         ports:
         - containerPort: 5000
       volumes:
       - name: api-volume
         hostPath: 
           path: /opt/pensta/curiosity/system/curiosity-api
+          type: Directory
+      - name: template-volume
+        hostPath: 
+          path: /opt/pensta/curiosity/manifest-templates
           type: Directory   
 ---
 apiVersion: v1

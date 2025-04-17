@@ -13,7 +13,7 @@ def runmanifest():
 
 @app.route('/update', methods=['POST'])
 def update():
-    temp_file="../../manifest-templates/update.yaml"
+    temp_file="/manifest-templates/update.yaml"
     # Delete the manifest incase its already ran like a job and sticks around
     result_delete_cmd = subprocess.run(['kubectl', 'delete', '-f', temp_file], 
                                capture_output=True, text=True, check=True)
