@@ -29,7 +29,7 @@ spec:
         - name: api-volume
           mountPath: /api
         ports:
-        - containerPort: 8000
+        - containerPort: 5000
       volumes:
       - name: api-volume
         hostPath: 
@@ -45,5 +45,5 @@ spec:
     app: curiosity-api
   ports:
   - port: 8000
-    targetPort: 8000
+    targetPort: 5000
   type: NodePort
