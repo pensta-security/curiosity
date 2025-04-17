@@ -14,6 +14,7 @@ spec:
       labels:
         app: curiosity-api
     spec:
+      serviceAccountName: kubectl-job-sa
       containers:
       - name: curiosity-api-container
         image: python:3.10-alpine
