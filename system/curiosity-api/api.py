@@ -11,7 +11,7 @@ def runmanifest():
     return jsonify({"message": "Manifest is running"}), 200
 
 @app.route('/update')
-def runmanifest():
+def update():
     return jsonify({"message": "Update running"}), 200
 
 if __name__ == '__main__':
