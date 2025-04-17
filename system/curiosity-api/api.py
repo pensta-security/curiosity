@@ -14,11 +14,16 @@ def runmanifest():
 @app.route('/update', methods=['POST'])
 def update():
     temp_file="/manifest-templates/update.yaml"
+    if(delete_and_create_from_manifest(temp_file)):
+        return jsonify({"message": "Update running"}), 200
+    else:
+        return jsonify({"message": "Error running update!"}), 200
 
+def delete_and_create_from_manifest(manifest_file):
     # Try deleting the manifest (ignore errors)
     try:
         result_delete_cmd = subprocess.run(
-            ['kubectl', 'delete', '-f', temp_file],
+            ['kubectl', 'delete', '-f', manifest_file],
             capture_output=True, text=True, check=True
         )
     except subprocess.CalledProcessError as e:
@@ -27,13 +32,14 @@ def update():
     # Try applying the manifest (ignore errors)
     try:
         result_create_cmd = subprocess.run(
-            ['kubectl', 'apply', '-f', temp_file],
+            ['kubectl', 'apply', '-f', manifest_file],
             capture_output=True, text=True, check=True
         )
     except subprocess.CalledProcessError as e:
         print("Apply failed:", e.stderr)
-    
-    return jsonify({"message": "Update running"}), 200
+        return False
+
+    return True
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
