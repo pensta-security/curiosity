@@ -3,12 +3,12 @@ import requests
 
 manifest = Blueprint('manifest', __name__)
 
-@system.route('/manifest/list')
+@manifest.route('/manifest/list')
 def index():
     """Main page"""
     return render_template('manifest/list.html')
 
-@system.route('/manifest/create')
+@manifest.route('/manifest/create')
 def create():
     """Editor page"""
     return render_template('manifest/editor.html')
