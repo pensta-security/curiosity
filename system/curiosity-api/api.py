@@ -10,5 +10,9 @@ def home():
 def runmanifest():
     return jsonify({"message": "Manifest is running"}), 200
 
+@app.route('/update')
+def runmanifest():
+    return jsonify({"message": "Update running"}), 200
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")
