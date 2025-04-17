@@ -27,6 +27,9 @@
                     <li class="nav-item">
                         <a class="nav-link {% if request.endpoint.startswith('main') %}active{% endif %}" href="{{ url_for('main.index') }}">Projects</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.endpoint.startswith('system') %}active{% endif %}" href="{{ url_for('system.index') }}">System</a>
+                    </li>
                 </ul>
             </div>
         </div>
