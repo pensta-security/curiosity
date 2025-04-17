@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.endpoint.startswith('projects') %}active{% endif %}" href="{{ url_for('projects.index') }}">Projects</a>
+                        <a class="nav-link {% if request.endpoint.startswith('main') %}active{% endif %}" href="{{ url_for('main.index') }}">Projects</a>
                     </li>
                 </ul>
             </div>
