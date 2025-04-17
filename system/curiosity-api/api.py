@@ -10,7 +10,7 @@ def home():
 def runmanifest():
     return jsonify({"message": "Manifest is running"}), 200
 
-@app.route('/update')
+@app.route('/update', methods=['POST'])
 def update():
     return jsonify({"message": "Update running"}), 200
 
