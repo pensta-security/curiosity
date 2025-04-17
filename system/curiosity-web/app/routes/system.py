@@ -14,7 +14,7 @@ def update():
     """update page"""
     try:
         data = []
-        response = requests.post('http://curiosity-api-service.default.svc.cluster.local/update', json=data, timeout=2)
+        response = requests.post('http://curiosity-api-service.default.svc.cluster.local:8000/update', json=data, timeout=2)
         response.raise_for_status()
         return jsonify({'message': 'Update running...'})
     except requests.RequestException as e:
