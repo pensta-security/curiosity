@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Curiosity - Manifests{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Manifests</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Create</h5>
+                                
+                                <a href="{{ url_for('manifest/create') }}" class="btn btn-primary">Create Manifest</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

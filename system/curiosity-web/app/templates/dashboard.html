@@ -11,6 +11,7 @@
             </div>
             <div class="card-body">
                 <div class="row">
+                    
                     <div class="col-md-4">
                         <div class="card mb-3">
                             <div class="card-body text-center">
@@ -20,6 +21,17 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Manifests</h5>
+                                <p class="display-4">{{ manifests_count }}</p>
+                                <a href="{{ url_for('manifest.index') }}" class="btn btn-primary">Manage Manifests</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>                
             </div>
         </div>
