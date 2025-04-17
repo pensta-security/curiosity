@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, flash, request,
 
 system = Blueprint('system', __name__)
 
-@system.route('/')
+@system.route('/sys')
 def index():
     """Main page"""
     return render_template('system/index.html')
