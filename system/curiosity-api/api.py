@@ -14,12 +14,24 @@ def runmanifest():
 @app.route('/update', methods=['POST'])
 def update():
     temp_file="/manifest-templates/update.yaml"
-    # Delete the manifest incase its already ran like a job and sticks around
-    result_delete_cmd = subprocess.run(['kubectl', 'delete', '-f', temp_file], 
-                               capture_output=True, text=True, check=True)
-    # Apply the manifest
-    result_create_cmd = subprocess.run(['kubectl', 'apply', '-f', temp_file], 
-                               capture_output=True, text=True, check=True)
+
+    # Try deleting the manifest (ignore errors)
+    try:
+        result_delete_cmd = subprocess.run(
+            ['kubectl', 'delete', '-f', temp_file],
+            capture_output=True, text=True, check=True
+        )
+    except subprocess.CalledProcessError as e:
+        print("Delete failed:", e.stderr)
+
+    # Try applying the manifest (ignore errors)
+    try:
+        result_create_cmd = subprocess.run(
+            ['kubectl', 'apply', '-f', temp_file],
+            capture_output=True, text=True, check=True
+        )
+    except subprocess.CalledProcessError as e:
+        print("Apply failed:", e.stderr)
     
     return jsonify({"message": "Update running"}), 200
 
