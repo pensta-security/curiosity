@@ -22,7 +22,7 @@ spec:
         - -c
         - |
           echo curiosity api v1
-          apt install -y kubectl
+          apk add --no-cache kubectl
           pip install flask subprocess
           cd /api
           python api.py
