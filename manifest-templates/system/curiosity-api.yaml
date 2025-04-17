@@ -24,7 +24,7 @@ spec:
         - |
           echo curiosity api v1
           apk add --no-cache kubectl
-          pip install flask subprocess
+          pip install flask
           cd /api
           python api.py
         volumeMounts:
