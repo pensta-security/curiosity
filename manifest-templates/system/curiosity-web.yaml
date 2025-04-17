@@ -22,7 +22,7 @@ spec:
         - -c
         - |
           echo curiosity web v1
-          pip install flask Flask-SQLAlchemy 
+          pip install flask Flask-SQLAlchemy requests
           cd /app
           python app.py
         volumeMounts:
