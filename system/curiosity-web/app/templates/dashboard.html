@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Curiosity - Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Penetration Testing Application Dashboard</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-3">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Projects</h5>
+                                <p class="display-4">{{ projects_count }}</p>
+                                <a href="{{ url_for('projects.index') }}" class="btn btn-primary">Manage Projects</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
