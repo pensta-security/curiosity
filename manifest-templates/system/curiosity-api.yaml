@@ -22,7 +22,8 @@ spec:
         - -c
         - |
           echo curiosity api v1
-          pip install flask
+          apt install -y kubectl
+          pip install flask subprocess
           cd /api
           python api.py
         volumeMounts:
